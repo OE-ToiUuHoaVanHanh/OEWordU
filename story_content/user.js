@@ -2,32 +2,35 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6Yf6FoIZ9tA":
+      case "6Vs5gv2gunn":
         Script1();
         break;
-      case "6DbFrWv9gqr":
+      case "5floMoNtChZ":
         Script2();
         break;
-      case "5Vs3ddofCGs":
+      case "6kuS2i4tilV":
         Script3();
         break;
-      case "5ribn3VfSez":
+      case "5jFwJJsXiWN":
         Script4();
         break;
-      case "5eAtXnrHjNe":
+      case "68WHBldcf7N":
         Script5();
         break;
-      case "6cg7WD6fUKH":
+      case "6NCZMSAERYn":
         Script6();
         break;
-      case "5djyu2Lth08":
+      case "5n5T8NGfL3Q":
         Script7();
         break;
-      case "68GpKlQb2Pb":
+      case "5u8UZkBH77h":
         Script8();
         break;
-      case "6eKErNF1xTL":
+      case "6CqBcHoPa9w":
         Script9();
+        break;
+      case "5qSkCfEX6rh":
+        Script10();
         break;
   }
 }
@@ -130,6 +133,23 @@ seconds = player.GetVar("seconds")
 }
 
 function Script9()
+{
+  let player=GetPlayer()
+email = player.GetVar("Email")
+point = player.GetVar("point")
+minutes = player.GetVar("minutes")
+seconds = player.GetVar("seconds")
+
+        fetch('https://prod-15.southeastasia.logic.azure.com:443/workflows/89237a440c244380a453290751144986/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HWJ_C_55DS-SA4EiKChPmjdtnd3IEo2WFAKK2qKJGuM', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_Email: email, point: parseInt(point),sophut:parseInt(minutes) ,sogiay:parseInt(seconds) })
+          })
+}
+
+function Script10()
 {
   player = GetPlayer()
 var corrects=player.GetVar("point")/10
