@@ -2,35 +2,29 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6Vs5gv2gunn":
+      case "6dc8iaaAW9V":
         Script1();
         break;
-      case "5floMoNtChZ":
+      case "5bqS9eKzVmh":
         Script2();
         break;
-      case "6kuS2i4tilV":
+      case "6J3oWlrwRCb":
         Script3();
         break;
-      case "5jFwJJsXiWN":
+      case "6PU3zOgn5Cu":
         Script4();
         break;
-      case "68WHBldcf7N":
+      case "6ZZyQXTaP11":
         Script5();
         break;
-      case "6NCZMSAERYn":
+      case "6N5fojEe36Q":
         Script6();
         break;
-      case "5n5T8NGfL3Q":
+      case "6giXTYtvd7P":
         Script7();
         break;
-      case "5u8UZkBH77h":
+      case "5vYPxumO562":
         Script8();
-        break;
-      case "6CqBcHoPa9w":
-        Script9();
-        break;
-      case "5qSkCfEX6rh":
-        Script10();
         break;
   }
 }
@@ -47,12 +41,10 @@ xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 xhr.onreadystatechange = function () {
   if (xhr.readyState == 4 && xhr.status == 200) {
       var response = JSON.parse(xhr.responseText);
-if(response.Authenticated=="Yes"){      
-player.SetVar("authenticated",true)
-}
-else{
-player.SetVar("authenticated",false)
-}
+
+player.SetVar("authenticated",response.Authenticated)
+
+
   }
 };
 // Gửi email người dùng trong JSON
@@ -117,42 +109,20 @@ player.SetVar("correctO1",false)
 
 function Script8()
 {
-  let player=GetPlayer()
-email = player.GetVar("Email")
-point = player.GetVar("point")
-minutes = player.GetVar("minutes")
-seconds = player.GetVar("seconds")
-
-        fetch('https://prod-15.southeastasia.logic.azure.com:443/workflows/89237a440c244380a453290751144986/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HWJ_C_55DS-SA4EiKChPmjdtnd3IEo2WFAKK2qKJGuM', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_Email: email, point: parseInt(point),sophut:parseInt(minutes) ,sogiay:parseInt(seconds) })
-          })
-}
-
-function Script9()
-{
-  let player=GetPlayer()
-email = player.GetVar("Email")
-point = player.GetVar("point")
-minutes = player.GetVar("minutes")
-seconds = player.GetVar("seconds")
-
-        fetch('https://prod-15.southeastasia.logic.azure.com:443/workflows/89237a440c244380a453290751144986/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HWJ_C_55DS-SA4EiKChPmjdtnd3IEo2WFAKK2qKJGuM', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_Email: email, point: parseInt(point),sophut:parseInt(minutes) ,sogiay:parseInt(seconds) })
-          })
-}
-
-function Script10()
-{
   player = GetPlayer()
 var corrects=player.GetVar("point")/10
 player.SetVar("socaudung",corrects)
+email = player.GetVar("Email")
+point = player.GetVar("point")
+minutes = player.GetVar("minutes")
+seconds = player.GetVar("seconds")
+
+        fetch('https://prod-15.southeastasia.logic.azure.com:443/workflows/89237a440c244380a453290751144986/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HWJ_C_55DS-SA4EiKChPmjdtnd3IEo2WFAKK2qKJGuM', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_Email: email, point: parseInt(point),sophut:parseInt(minutes) ,sogiay:parseInt(seconds) })
+          })
 }
 
